@@ -108,7 +108,7 @@ class ElectricityPriceConfig(BaseModel):
 
     def get_instant_price(self, date):
         local_date = utc_to_local(date)
-        if self.night_price is None:
+        if not self.is_nigh_hour_enabled():
             return self.day_price
         if self.compare_hour(local_date, self.night_hour_start.hours, self.night_hour_start.minutes) or \
                 not self.compare_hour(local_date, self.night_hour_end.hours, self.night_hour_end.minutes):
