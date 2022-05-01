@@ -203,7 +203,7 @@ class PSAClient:
                                      charging_mode, charging_rate, autonomy)
             logger.debug("charging_status:%s ", charging_status)
         except AttributeError:
-            logger.error("charging status not available from api")
+            logger.exception("charging status not available from api")
 
     def __iter__(self):
         for key, value in self.__dict__.items():
